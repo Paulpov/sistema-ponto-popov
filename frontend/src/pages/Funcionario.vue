@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
     <h2 class="text-2xl font-bold mb-4">Registro de Ponto (Funcionário)</h2>
 
     <div class="mb-6">
@@ -88,4 +88,6 @@ function enviarAjuste() {
   alert(`Ajuste solicitado para ${registros.value[ajusteIndex.value].tipo} às ${novoHorario.value}.\nMotivo: ${justificativa.value}`)
   fecharPopup()
 }
+import { useTheme } from '../composables/useTheme'
+useTheme() // aplica o tema ao montar
 </script>

@@ -25,5 +25,7 @@ onMounted(() => {
     router.push('/funcionario')
   }
 })
+import { useTheme } from '../composables/useTheme'
+useTheme() // aplica o tema ao montar
+
 </script>
-j

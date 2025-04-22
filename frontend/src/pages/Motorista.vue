@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
     <h2 class="text-2xl font-bold mb-4">Controle de Jornada (Motorista)</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
       <button v-for="tipo in macros" :key="tipo" @click="registrarMacro(tipo)"
@@ -44,7 +44,7 @@ import { ref } from 'vue'
 const macros = ['Em Rota', 'Descanso', 'Chegada no Cliente', 'Fim da Descarga', 'Aguardando', 'Em Direção']
 const jornada = ref([])
 
-const mapaURL = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDROTA-FakeKeyOnlyParaExemplo&q=Rolandia,PR'
+const mapaURL = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyBRNLTVB7LvTqZBG4HLCmc4R55w-xBoLvs&q=Rolandia,PR'
 
 function registrarMacro(tipo) {
   const agora = new Date()
@@ -55,4 +55,6 @@ function registrarMacro(tipo) {
     local: 'Rolândia, PR'
   })
 }
+import { useTheme } from '../composables/useTheme'
+useTheme() // aplica o tema ao montar
 </script>

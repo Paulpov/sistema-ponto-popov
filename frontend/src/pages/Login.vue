@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen">
+  <div class="flex h-screen bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
     <div class="hidden md:block w-1/2 bg-cover bg-center" style="background-image: url('/src/assets/images/background.png')"></div>
     <div class="w-full md:w-1/2 flex items-center justify-center bg-white dark:bg-gray-900">
       <div class="max-w-md w-full p-8">
@@ -40,4 +40,6 @@ function fakeLogin() {
   store.login(user)
   router.push('/dashboard')
 }
+import { useTheme } from '../composables/useTheme'
+useTheme() // aplica o tema ao montar
 </script>

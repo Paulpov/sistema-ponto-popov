@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
     <h2 class="text-2xl font-bold mb-6">Fechamento PJ</h2>
     <p class="text-gray-600 dark:text-gray-300 mb-4">
       Gere relatórios mensais com ou sem comissão e exporte como PDF.
@@ -55,4 +55,6 @@ const liquido = computed(() => bruto.value - (bruto.value * parseFloat(comissao.
 function gerarPDF() {
   gerarPDFPJMock(nome.value || 'Prestador PJ', bruto.value, parseFloat(comissao.value), liquido.value)
 }
+import { useTheme } from '../composables/useTheme'
+useTheme() // aplica o tema ao montar
 </script>

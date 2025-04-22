@@ -11,3 +11,15 @@ module.exports = {
   },
   plugins: [],
 }
+// tailwind.config.js
+export default {
+  darkMode: 'class', // ESSENCIAL
+  content: ['./index.html', './src/**/*.{vue,js,ts}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+
