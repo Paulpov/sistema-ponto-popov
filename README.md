@@ -1,6 +1,8 @@
 # 📌 Sistema de Ponto Popov
 
-Sistema profissional de controle de ponto para motoristas e funcionários de escritório, com GPS, jornada dinâmica e dashboard completo.
+Sistema profissional de controle de ponto desenvolvido por engenheiro de software formado, com foco em conformidade total com a legislação brasileira, incluindo **CLT** e **Lei do Motorista (Lei nº 13.103/2015)**.
+
+Todos os registros, cálculos de horas extras, adicionais noturnos e jornadas seguirão rigorosamente as determinações legais para garantir segurança jurídica e transparência.
 
 ---
 
@@ -59,15 +61,15 @@ npm run dev
 
 ### Funcionários de Escritório
 - Registro de ponto com localização
-- Cálculo automático de extras, noturnas
-- Relatórios por período
-- Jornada dinâmica
+- Cálculo automático de extras (50%, 100%) e adicional noturno
+- Respeito à jornada compensatória (Banco de horas)
+- Relatórios por período com conformidade à CLT
 
 ### Motoristas
-- Botões de status (Em rota, Descanso, Chegada, etc)
-- Registro via GPS
-- Monitoramento de rota
-- Linha do tempo de viagem
+- Botões de status: Em Rota, Descanso, Chegada, Aguardando, etc.
+- Registro contínuo por GPS
+- Monitoramento completo de rota
+- Cálculo com base na Lei do Motorista (descanso obrigatório, jornada máxima, etc.)
 
 ---
 
@@ -78,6 +80,8 @@ npm run dev
 ---
 
 ## 👨‍💻 Desenvolvido por
-Jhonatan Lucas Popov Paul - [Popov Transportes](https://github.com/seuusuario)
+**Jhonatan Lucas Popov Paul**  
+Engenheiro de Software formado e responsável pela Popov Transportes.  
+Projeto focado em **conformidade legal, transparência e inovação** no controle de jornada.
 
 ---
