@@ -1,25 +1,22 @@
 # 📌 Sistema de Ponto Popov
 
-Sistema profissional de controle de ponto desenvolvido por engenheiro de software formado, com foco em conformidade total com a legislação brasileira, incluindo **CLT** e **Lei do Motorista (Lei nº 13.103/2015)**.
-
-Todos os registros, cálculos de horas extras, adicionais noturnos e jornadas seguirão rigorosamente as determinações legais para garantir segurança jurídica e transparência.
+Sistema profissional de controle de ponto com foco em conformidade total com a legislação brasileira, incluindo **CLT** e **Lei do Motorista (Lei nº 13.103/2015)**.
 
 ---
 
 ## ⚙️ Tecnologias Utilizadas
 
 ### Frontend:
-- [Vue 3](https://vuejs.org/)
-- [Vite](https://vitejs.dev/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [Pinia](https://pinia.vuejs.org/)
-- [Vue Router](https://router.vuejs.org/)
+- Vue 3 + Vite
+- TailwindCSS
+- Pinia
+- Vue Router
+- Axios
 
 ### Backend:
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [PostgreSQL ou MongoDB](https://www.postgresql.org/ ou https://www.mongodb.com/)
-- [JWT](https://jwt.io/)
+- Node.js + Express
+- PostgreSQL ou MongoDB
+- JWT
 
 ---
 
@@ -27,13 +24,13 @@ Todos os registros, cálculos de horas extras, adicionais noturnos e jornadas se
 
 ```
 /sistema-ponto-popov
-├── frontend/    # Interface em Vue 3
-├── backend/     # API em Node.js + Express
+├── frontend/    # Interface moderna e responsiva
+├── backend/     # API Node.js
 ```
 
 ---
 
-## 🚀 Como Rodar Localmente
+## 🚀 Como Rodar o Projeto
 
 ### 1. Clonar o Projeto
 ```bash
@@ -41,12 +38,22 @@ git clone https://github.com/seuusuario/sistema-ponto-popov.git
 cd sistema-ponto-popov
 ```
 
-### 2. Rodar o Frontend
+### 2. Rodar o Frontend (Vue 3 + Vite)
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+
+⚠️ **IMPORTANTE**: Certifique-se de que o arquivo `src/assets/main.css` existe com o conteúdo:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Este arquivo é essencial para a estilização do sistema com TailwindCSS.
 
 ### 3. Rodar o Backend
 ```bash
@@ -57,19 +64,25 @@ npm run dev
 
 ---
 
-## ✅ Funcionalidades Planejadas
+## ✅ Funcionalidades
 
-### Funcionários de Escritório
+### Funcionários (CLT)
 - Registro de ponto com localização
-- Cálculo automático de extras (50%, 100%) e adicional noturno
-- Respeito à jornada compensatória (Banco de horas)
-- Relatórios por período com conformidade à CLT
+- Cálculo de horas normais, extras 50% e 100%, e adicional noturno
+- Controle de banco de horas (jornada compensatória)
+- Exportação de relatório em PDF
 
-### Motoristas
-- Botões de status: Em Rota, Descanso, Chegada, Aguardando, etc.
-- Registro contínuo por GPS
-- Monitoramento completo de rota
-- Cálculo com base na Lei do Motorista (descanso obrigatório, jornada máxima, etc.)
+### Motoristas (CLT)
+- Interface com botões de status: Em Rota, Descanso, Chegada, etc.
+- Monitoramento GPS da jornada
+- Registro por data/hora/localização
+- Resumo da jornada conforme Lei nº 13.103/2015
+- Geração de relatório e PDF da rota
+
+### Prestadores PJ
+- Fechamento mensal com ou sem comissão
+- Cálculo de valor bruto, comissão e valor líquido
+- Exportação em PDF
 
 ---
 
@@ -81,7 +94,8 @@ npm run dev
 
 ## 👨‍💻 Desenvolvido por
 **Jhonatan Lucas Popov Paul**  
-Engenheiro de Software formado e responsável pela Popov Transportes.  
-Projeto focado em **conformidade legal, transparência e inovação** no controle de jornada.
+Engenheiro de Software formado e responsável pela Popov Transportes.
+
+Projeto focado em **conformidade legal, usabilidade moderna e eficiência operacional**.
 
 ---
