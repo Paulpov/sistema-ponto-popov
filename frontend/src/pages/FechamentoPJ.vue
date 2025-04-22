@@ -1,6 +1,14 @@
 <template>
   <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
     <h2 class="text-2xl font-bold mb-6">Fechamento PJ</h2>
+
+    <button
+      @click="router.back()"
+      class="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition mb-4"
+    >
+      <span class="text-lg">←</span> Voltar
+    </button>
+
     <p class="text-gray-600 dark:text-gray-300 mb-4">
       Gere relatórios mensais com ou sem comissão e exporte como PDF.
     </p>
@@ -29,7 +37,9 @@
         <option value="0.15">Comissão 15%</option>
       </select>
 
-      <div class="text-right text-lg font-semibold text-gray-700 dark:text-white">
+      <div
+        class="text-right text-lg font-semibold text-gray-700 dark:text-white"
+      >
         Valor líquido: R$ {{ liquido.toFixed(2) }}
       </div>
 
@@ -44,17 +54,28 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import { gerarPDFPJMock } from '../utils/pdfGenerator'
+import { ref, computed } from "vue";
+import { gerarPDFPJMock } from "../utils/pdfGenerator";
 
-const nome = ref('')
-const bruto = ref(0)
-const comissao = ref(0)
-const liquido = computed(() => bruto.value - (bruto.value * parseFloat(comissao.value)))
+const nome = ref("");
+const bruto = ref(0);
+const comissao = ref(0);
+const liquido = computed(
+  () => bruto.value - bruto.value * parseFloat(comissao.value)
+);
 
 function gerarPDF() {
-  gerarPDFPJMock(nome.value || 'Prestador PJ', bruto.value, parseFloat(comissao.value), liquido.value)
+  gerarPDFPJMock(
+    nome.value || "Prestador PJ",
+    bruto.value,
+    parseFloat(comissao.value),
+    liquido.value
+  );
 }
-import { useTheme } from '../composables/useTheme'
-useTheme() // aplica o tema ao montar
+import { useTheme } from "../composables/useTheme";
+useTheme(); // aplica o tema ao montar
+
+import { useRouter } from "vue-router";
+const router = useRouter();
 </script>
+

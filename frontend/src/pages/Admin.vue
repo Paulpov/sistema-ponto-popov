@@ -1,6 +1,13 @@
 <template>
-  <div class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-6">
-    <h2 class="text-2xl font-bold mb-6">Dashboard</h2>
+  <div
+    class="bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-6"
+  >
+    <button
+      @click="router.back()"
+      class="inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition mb-4"
+    >
+      <span class="text-lg">←</span> Voltar
+    </button>
 
     <!-- Atalhos do Admin -->
     <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-8">
@@ -46,55 +53,84 @@
 
     <!-- Gráficos -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Gráfico Funcionários -->
+      <!-- PieChart Funcionários -->
       <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
-        <h4 class="font-semibold mb-2">📈 Funcionários de Escritório</h4>
-        <BarChart :labels="['João Paulo', 'Ana Costa']" :values="[4, 3]" />
+        <h4 class="font-semibold mb-4">📈 Status dos Funcionários</h4>
+        <div class="max-w-[300px] mx-auto">
+          <PieChart
+            :labels="['Entrada', 'Saída Almoço', 'Volta Almoço', 'Saída Final']"
+            :values="[5, 2, 3, 4]"
+          />
+        </div>
       </div>
 
-      <!-- Gráfico Motoristas -->
+      <!-- PieChart Motoristas -->
       <div class="bg-white dark:bg-gray-800 p-4 rounded shadow">
-        <h4 class="font-semibold mb-2">🚚 Status dos Motoristas</h4>
-        <PieChart :labels="['Em Direção', 'Descanso', 'Aguardando']" :values="[2, 1, 1]" />
+        <h4 class="font-semibold mb-4">🚚 Status dos Motoristas</h4>
+        <div class="max-w-[300px] mx-auto">
+          <PieChart
+            :labels="['Em Direção', 'Descanso', 'Aguardando']"
+            :values="[2, 1, 1]"
+          />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router'
-import { useTheme } from '../composables/useTheme'
-import BarChart from '../components/BarChart.vue'
-import PieChart from '../components/PieChart.vue'
+import { useRouter } from "vue-router";
+import { useTheme } from "../composables/useTheme";
+import PieChart from "../components/PieChart.vue";
 
-useTheme()
-const router = useRouter()
+useTheme();
+const router = useRouter();
 
 const items = [
   {
-    emoji: '🕓',
-    title: 'Controle de Ponto',
-    desc: 'Registro de entrada e saída',
-    route: '/funcionario'
+    emoji: "🕓",
+    title: "Controle de Ponto",
+    desc: "Registro de entrada e saída",
+    route: "/funcionario",
   },
   {
-    emoji: '🛣️',
-    title: 'Controle de Rotas e Jornada',
-    desc: 'Visualização e análise das rotas',
-    route: '/motorista'
+    emoji: "🛣️",
+    title: "Controle de Rotas e Jornada",
+    desc: "Visualização e análise das rotas",
+    route: "/motorista",
   },
   {
-    emoji: '📊',
-    title: 'Fechamento PJ',
-    desc: 'Relatórios e PDFs dos prestadores',
-    route: '/fechamento'
-  }
-]
+    emoji: "📊",
+    title: "Fechamento PJ",
+    desc: "Relatórios e PDFs dos prestadores",
+    route: "/fechamento",
+  },
+];
 
 const colaboradores = [
-  { nome: 'João Paulo', tipo: 'Funcionário', status: 'Saída Final', horario: '22/04 - 18:10' },
-  { nome: 'Ana Costa', tipo: 'Funcionário', status: 'Volta Almoço', horario: '22/04 - 13:14' },
-  { nome: 'Lucas Almeida', tipo: 'Motorista', status: 'Em Direção', horario: '22/04 - 17:45' },
-  { nome: 'Carla Martins', tipo: 'Motorista', status: 'Descanso', horario: '22/04 - 16:30' }
-]
+  {
+    nome: "João Paulo",
+    tipo: "Funcionário",
+    status: "Saída Final",
+    horario: "22/04 - 18:10",
+  },
+  {
+    nome: "Ana Costa",
+    tipo: "Funcionário",
+    status: "Volta Almoço",
+    horario: "22/04 - 13:14",
+  },
+  {
+    nome: "Lucas Almeida",
+    tipo: "Motorista",
+    status: "Em Direção",
+    horario: "22/04 - 17:45",
+  },
+  {
+    nome: "Carla Martins",
+    tipo: "Motorista",
+    status: "Descanso",
+    horario: "22/04 - 16:30",
+  },
+];
 </script>
