@@ -44,11 +44,20 @@
         <option value="motorista">Motorista</option>
         <option value="funcionario">Funcionário</option>
       </select>
+
       <button
         class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded w-full"
       >
         Cadastrar
       </button>
+
+      <!-- Mensagem de erro -->
+      <div
+        v-if="erro"
+        class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded text-center text-sm font-semibold"
+      >
+        {{ erro }}
+      </div>
     </form>
     <p class="text-sm text-gray-600 dark:text-gray-300 mt-4">
       Já tem uma conta?
@@ -61,6 +70,12 @@
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useMainStore } from "../store";
+import api from "../axios";
+import { useTheme } from "../composables/useTheme";
+
+useTheme();
 
 const nome = ref("");
 const sobrenome = ref("");
@@ -69,6 +84,9 @@ const senha = ref("");
 const tipo = ref("");
 const cpf = ref("");
 const cpfErro = ref(false);
+const erro = ref("");
+const router = useRouter();
+const store = useMainStore();
 
 function validarCPF() {
   const cpfValue = cpf.value.replace(/[^0-9]/g, "");
@@ -99,13 +117,40 @@ function validarCPF() {
   return true;
 }
 
-function cadastrar() {
+async function cadastrar() {
+  erro.value = "";
+
   if (!validarCPF()) {
-    alert("CPF inválido.");
+    erro.value = "CPF inválido.";
     return;
   }
-  alert(`Usuário ${nome.value} ${sobrenome.value} cadastrado com sucesso!`);
+
+  try {
+    const res = await api.post("/cadastro", {
+      nome: nome.value,
+      sobrenome: sobrenome.value,
+      email: email.value,
+      senha: senha.value,
+      cpf: cpf.value,
+      papel: tipo.value,
+    });
+
+    const user = res.data;
+    localStorage.setItem("token", user.token);
+
+    store.login({
+      nome: user.nome,
+      email: user.email,
+      tipo: user.papel,
+      id: user.id,
+      token: user.token,
+    });
+
+    router.push("/dashboard");
+  } catch (err) {
+    erro.value = "Erro ao cadastrar usuário. Verifique os dados.";
+  }
 }
-import { useTheme } from "../composables/useTheme";
-useTheme(); // aplica o tema ao montar
 </script>
+
+
