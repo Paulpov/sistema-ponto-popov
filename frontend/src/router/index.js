@@ -6,9 +6,9 @@ import Admin from '../pages/Admin.vue'
 import Motorista from '../pages/Motorista.vue'
 import Funcionario from '../pages/Funcionario.vue'
 import FechamentoPJ from '../pages/FechamentoPJ.vue'
-import AcessoNegado from '../pages/AcessoNegado.vue' // (🆕 criar se necessário)
+import AcessoNegado from '../pages/AcessoNegado.vue'
 
-import { useUserStore } from '../store/user'
+import { useMainStore } from '../store'
 
 const routes = [
   { path: '/', component: Login },
@@ -28,9 +28,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const store = useUserStore()
+  const store = useMainStore()
 
-  const isAuthenticated = !!store.token
+  const isAuthenticated = !!store.user?.token
   const allowedRoles = to.meta.roles
   const requiresAuth = to.meta.requiresAuth
 
@@ -38,7 +38,7 @@ router.beforeEach((to, from, next) => {
     return next('/')
   }
 
-  if (allowedRoles && !allowedRoles.includes(store.papel)) {
+  if (allowedRoles && !allowedRoles.includes(store.user?.tipo)) {
     return next('/acesso-negado')
   }
 

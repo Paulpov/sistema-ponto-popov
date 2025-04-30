@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import express from 'express'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
@@ -9,11 +11,15 @@ const JWT_SECRET = process.env.JWT_SECRET
 
 router.post('/cadastro', async (req, res) => {
   const { nome, sobrenome, email, senha, cpf, papel } = req.body
-  if (!email || !senha || !nome || !papel) return res.status(400).json({ error: 'Dados obrigatórios ausentes' })
+  if (!email || !senha || !nome || !papel) {
+    return res.status(400).json({ error: 'Dados obrigatórios ausentes' })
+  }
 
   const users = JSON.parse(fs.readFileSync(usersPath))
   const userExists = users.find(u => u.email === email)
-  if (userExists) return res.status(400).json({ error: 'Usuário já existe' })
+  if (userExists) {
+    return res.status(400).json({ error: 'Usuário já existe' })
+  }
 
   const hashed = await bcrypt.hash(senha, 10)
   const novoUsuario = {
@@ -45,5 +51,8 @@ router.post('/login', async (req, res) => {
   const token = jwt.sign({ id: user.id, papel: user.papel }, JWT_SECRET, { expiresIn: '1d' })
   res.json({ nome: user.nome, email: user.email, id: user.id, papel: user.papel, token })
 })
+
+console.log('🔐 JWT_SECRET (auth.js):', process.env.JWT_SECRET)
+
 
 export default router

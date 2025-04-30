@@ -1,101 +1,98 @@
-# 📌 Sistema de Ponto Popov
+# 🧠 Sistema Popov Hórus
 
-Sistema profissional de controle de ponto com foco em conformidade total com a legislação brasileira, incluindo **CLT** e **Lei do Motorista (Lei nº 13.103/2015)**.
-
----
-
-## ⚙️ Tecnologias Utilizadas
-
-### Frontend:
-- Vue 3 + Vite
-- TailwindCSS
-- Pinia
-- Vue Router
-- Axios
-
-### Backend:
-- Node.js + Express
-- PostgreSQL ou MongoDB
-- JWT
+Este projeto é um sistema completo de ponto e controle de usuários com base em **permissões** (admin, motorista, funcionário). Possui frontend em Vue 3 + Vite + Tailwind + Pinia e backend em Node.js com autenticação JWT.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📦 BACKEND - Node.js + Express + JWT
 
-```
-/sistema-ponto-popov
-├── frontend/    # Interface moderna e responsiva
-├── backend/     # API Node.js
-```
+### ▶️ Como executar:
 
----
-
-## 🚀 Como Rodar o Projeto
-
-### 1. Clonar o Projeto
 ```bash
-git clone https://github.com/seuusuario/sistema-ponto-popov.git
-cd sistema-ponto-popov
+cd backend_popov_horus
+npm install
+npm start
 ```
 
-### 2. Rodar o Frontend (Vue 3 + Vite)
+### 🔧 Ferramentas necessárias:
+- Node.js **v18 ou superior**
+- NPM
+- Porta 3000 disponível
+- `.env` com:
+  ```
+  JWT_SECRET=popovsegredo123
+  PORT=3000
+  ```
+
+### 🔐 Endpoints disponíveis:
+
+| Rota           | Método | Descrição                          |
+|----------------|--------|------------------------------------|
+| `/api/login`   | POST   | Login de usuário                   |
+| `/api/cadastro`| POST   | Cadastro de novo usuário           |
+
+Usuários são armazenados em `users.json` (simulando um banco de dados).
+
+---
+
+## 🖥️ FRONTEND - Vue 3 + Vite + Tailwind + Pinia
+
+### ▶️ Como executar:
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-⚠️ **IMPORTANTE**: Certifique-se de que o arquivo `src/assets/main.css` existe com o conteúdo:
+### 💡 Ferramentas necessárias:
+- Node.js **v18 ou superior**
+- Vite (já incluído nas dependências)
+- Navegador moderno (recomenda-se Chrome ou Edge)
 
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+### 📲 Integração:
+- O frontend se comunica via `axios` com `http://localhost:3000/api`
+- O token JWT é salvo automaticamente no `localStorage`
+- As rotas são protegidas com base no tipo de usuário:
+  - `admin`
+  - `motorista`
+  - `escritorio`
+
+---
+
+## 🎯 Funcionalidades do sistema
+
+- Autenticação com login e senha
+- Cadastro com validação de CPF
+- Controle por tipo de usuário
+- Roteamento seguro com Vue Router
+- Tema claro/escuro
+- Layout responsivo e moderno com TailwindCSS
+
+---
+
+## 🧰 Estrutura
+
+```
+📁 backend_popov_horus
+├── routes/
+│   └── auth.js
+├── users.json
+├── index.js
+├── package.json
+├── .env
+└── README.md
+
+📁 frontend
+├── src/
+│   ├── pages/
+│   │   └── Login.vue, Cadastro.vue
+│   ├── store/
+│   ├── router/
+│   └── axios.js
+└── vite.config.js
 ```
 
-Este arquivo é essencial para a estilização do sistema com TailwindCSS.
-
-### 3. Rodar o Backend
-```bash
-cd backend
-npm install
-npm run dev
-```
-
 ---
 
-## ✅ Funcionalidades
-
-### Funcionários (CLT)
-- Registro de ponto com localização
-- Cálculo de horas normais, extras 50% e 100%, e adicional noturno
-- Controle de banco de horas (jornada compensatória)
-- Exportação de relatório em PDF
-
-### Motoristas (CLT)
-- Interface com botões de status: Em Rota, Descanso, Chegada, etc.
-- Monitoramento GPS da jornada
-- Registro por data/hora/localização
-- Resumo da jornada conforme Lei nº 13.103/2015
-- Geração de relatório e PDF da rota
-
-### Prestadores PJ
-- Fechamento mensal com ou sem comissão
-- Cálculo de valor bruto, comissão e valor líquido
-- Exportação em PDF
-
----
-
-## 📡 Deploy
-- **Frontend:** [Vercel](https://vercel.com/)
-- **Backend:** [Heroku](https://www.heroku.com/)
-
----
-
-## 👨‍💻 Desenvolvido por
-**Jhonatan Lucas Popov Paul**  
-Engenheiro de Software formado e responsável pela Popov Transportes.
-
-Projeto focado em **conformidade legal, usabilidade moderna e eficiência operacional**.
-
----
+Desenvolvido com ❤️ por Popov Transportes.

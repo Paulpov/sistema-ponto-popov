@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "1746045941560",
+    "nome": "Jhonatan Lucas",
+    "sobrenome": "Popov Paul",
+    "email": "jhonatan@popovtransportes.com.br",
+    "senha": "$2b$10$Q7uv6jSbNsLrhjhuCE4NzO1.3AeJb6ViSzEYTNLcFrPYTI3mbPZ/.",
+    "cpf": "05071137135",
+    "papel": "admin"
+  },
+  {
+    "id": "1746046359436",
+    "nome": "João",
+    "sobrenome": "Silva",
+    "email": "joao@teste.com",
+    "senha": "$2b$10$kfn498Yg5bWXpCPQrZOO6ehg2y/dqS/CRJwqqpUqVkgVKBBEEGv4K",
+    "cpf": "12345678901",
+    "papel": "admin"
+  }
+]
